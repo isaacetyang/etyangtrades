@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DERIV AI TRADING PRO</title><link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header><div><span class="brand-mark">D</span><div><h1>DERIV AI TRADING PRO</h1><p>Market intelligence · Controlled execution</p></div></div><span class="pill" id="serverMode">PAPER READY</span></header>
+<main>
+<section class="hero"><div><p class="eyebrow">TRADING CONTROL CENTER</p><h2>Analyse smarter.<br><em>Trade with discipline.</em></h2><p class="muted">Live market data, technical signals and risk-managed execution in one workspace.</p></div><div class="hero-stat"><small>SESSION MODE</small><strong id="modeLabel">PAPER</strong><span>Real execution disabled by default</span></div></section>
+<div class="grid">
+<section class="panel wide">
+<div class="panel-head"><div><h3>Market analysis</h3><p>EMA · RSI · Momentum · MACD-style trend filter</p></div><span class="live-dot">● LIVE DATA</span></div>
+<div class="controls"><label>Market symbol<select id="symbol"><option>R_10</option><option>R_25</option><option>R_50</option><option>R_75</option><option>R_100</option><option>frxEURUSD</option><option>frxGBPUSD</option><option>cryBTCUSD</option></select></label><label>Analysis token (optional)<input id="analysisToken" type="password" placeholder="Token for private market access"></label><button id="analyseBtn" class="primary">Analyse market</button></div>
+<div class="signal-row"><div><small>AI SIGNAL</small><strong id="signal">WAIT</strong></div><div><small>CONFIDENCE</small><strong id="confidence">—</strong></div><div><small>LATEST PRICE</small><strong id="latestPrice">—</strong></div></div>
+<div class="metrics"><div><small>EMA 9</small><b id="ema9">—</b></div><div><small>EMA 21</small><b id="ema21">—</b></div><div><small>RSI 14</small><b id="rsi">—</b></div><div><small>MOMENTUM</small><b id="momentum">—</b></div></div>
+<p id="analysisReason" class="notice">Connect or analyse a market to view technical indicators.</p>
+</section>
+<section class="panel">
+<div class="panel-head"><div><h3>Account connection</h3><p>Credentials remain in server memory for this session.</p></div></div>
+<label>Deriv API token<input id="token" type="password" autocomplete="off" placeholder="Paste API token"></label>
+<label>Account type<select id="accountMode"><option value="demo">Demo / Virtual</option><option value="real">Real</option></select></label>
+<button id="connectBtn" class="secondary">Connect account</button>
+<div class="account-info"><small>ACCOUNT</small><b id="accountId">Not connected</b><small>BALANCE</small><b id="balance">—</b></div>
+<p class="tiny">Use a token with read and trade permissions for automatic execution. Never share it.</p>
+</section>
+<section class="panel">
+<div class="panel-head"><div><h3>Execution settings</h3><p>Start in paper mode to validate signals.</p></div></div>
+<label>Execution mode<select id="executionMode"><option value="paper">Paper signals only</option><option value="demo_auto">Demo auto trading</option><option value="real_auto">Real auto trading (gated)</option></select></label>
+<label>Contract type<select id="contractType"><option value="CALL">Rise / Fall (directional)</option><option value="HIGHER">Higher</option><option value="LOWER">Lower</option><option value="DIGITOVER">Over</option><option value="DIGITUNDER">Under</option><option value="DIGITEVEN">Even</option><option value="DIGITODD">Odd</option><option value="DIGITMATCH">Matches</option><option value="DIGITDIFF">Differs</option><option value="MULTUP">Multiplier Up</option><option value="MULTDOWN">Multiplier Down</option><option value="ACCU">Accumulator</option></select></label>
+<div class="two"><label>Stake (USD)<input id="stake" type="number" min="0.25" max="10" step="0.05" value="0.25"></label><label>Min. confidence<input id="minConfidence" type="number" min="50" max="95" value="70"></label></div>
+<label class="check"><input id="realConfirm" type="checkbox"> I understand real trades can lose money and explicitly authorize live execution.</label>
+<div class="button-row"><button id="startBtn" class="primary">Start bot</button><button id="stopBtn" class="danger" disabled>Stop bot</button></div>
+<div class="risk-note"><b>Risk guardrails</b><span>2% max stake cap · 10% daily loss stop · 3 consecutive loss stop · 3 recovery attempts · no martingale</span></div>
+</section>
+<section class="panel">
+<div class="panel-head"><div><h3>Digit statistics</h3><p>Historical description, not a prediction.</p></div></div>
+<div id="digitStats" class="digit-grid">Analyse a market to populate digit frequencies.</div>
+</section>
+<section class="panel wide">
+<div class="panel-head"><div><h3>Bot activity</h3><p>Signals, trade events and safety notifications.</p></div><button id="clearLog" class="ghost">Clear</button></div>
+<div id="logs" class="logs"><div class="log muted">System ready. Paper mode is the default.</div></div>
+</section>
+</div>
+<footer>Independent community project · Not affiliated with Deriv · Trading involves risk.</footer>
+</main>
+<script src="/static/app.js"></script>
+</body></html>
